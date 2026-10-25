@@ -35,17 +35,18 @@
 						alt="Demo de segmentación hexagonal para prospección de clientes"
 						loading="lazy"
 					/>
+					<div class="scrim">
+						<h3>
+							Indexado Espacial <span class="ext" aria-hidden="true">↗</span>
+						</h3>
+					</div>
 				</div>
-				<div class="body">
-					<span class="cat">Herramienta visual</span>
-					<h2>Indexado Espacial</h2>
-					<p>
-						Segmentación hexagonal para prospección de clientes por <b
-							>facturación geográfica</b
-						>. Reduce costos operativos al enfocar mejor la atención comercial.
-					</p>
-					<span class="cta">Live demo <span class="arrow">→</span></span>
-				</div>
+				<span class="cat">Herramienta visual</span>
+				<p class="desc">
+					Segmentación hexagonal para prospección de clientes por <b
+						>facturación geográfica</b
+					>. Reduce costos operativos al enfocar mejor la atención comercial.
+				</p>
 			</a>
 
 			<a
@@ -59,18 +60,19 @@
 						alt="Visualización de capas cartográficas del Perú"
 						loading="lazy"
 					/>
+					<div class="scrim">
+						<h3>
+							Cartografía de Perú <span class="ext" aria-hidden="true">↗</span>
+						</h3>
+					</div>
 				</div>
-				<div class="body">
-					<span class="cat">Datos geoespaciales</span>
-					<h2>Cartografía de Perú</h2>
-					<p>
-						Descarga la cartografía del Perú en formatos ligeros como <b
-							>topojson</b
-						>, lista para tus proyectos de analítica. Incluye capas
-						departamentales, provinciales y distritales.
-					</p>
-					<span class="cta">Live demo <span class="arrow">→</span></span>
-				</div>
+				<span class="cat">Datos geoespaciales</span>
+				<p class="desc">
+					Descarga la cartografía del Perú en formatos ligeros como <b
+						>topojson</b
+					>, lista para tus proyectos de analítica. Incluye capas
+					departamentales, provinciales y distritales.
+				</p>
 			</a>
 
 			<a
@@ -85,16 +87,18 @@
 						alt="Mapa de sismos en el Perú"
 						loading="lazy"
 					/>
+					<div class="scrim">
+						<h3>
+							Terremotos en el Perú <span class="ext" aria-hidden="true">↗</span
+							>
+						</h3>
+					</div>
 				</div>
-				<div class="body">
-					<span class="cat">Visualización de datos</span>
-					<h2>Terremotos en el Perú</h2>
-					<p>
-						Ubicación, profundidad e intensidad de los sismos ocurridos en el
-						Perú. Visualización interactiva para explorar patrones geográficos.
-					</p>
-					<span class="cta">Live demo <span class="arrow">→</span></span>
-				</div>
+				<span class="cat">Visualización de datos</span>
+				<p class="desc">
+					Ubicación, profundidad e intensidad de los sismos ocurridos en el
+					Perú. Visualización interactiva para explorar patrones geográficos.
+				</p>
 			</a>
 
 			<a
@@ -109,22 +113,25 @@
 						alt="Análisis de desapariciones en Ecuador"
 						loading="lazy"
 					/>
+					<div class="scrim">
+						<h3>
+							Desapariciones en Ecuador <span class="ext" aria-hidden="true"
+								>↗</span
+							>
+						</h3>
+					</div>
 				</div>
-				<div class="body">
-					<span class="cat">Análisis de datos</span>
-					<h2>Personas desaparecidas en el Ecuador</h2>
-					<p>
-						Análisis de datos sobre las causas detrás de la desaparición de
-						personas en Ecuador. Una mirada cuantitativa a un problema social
-						urgente.
-					</p>
-					<span class="cta">Live demo <span class="arrow">→</span></span>
-				</div>
+				<span class="cat">Análisis de datos</span>
+				<p class="desc">
+					Análisis de datos sobre las causas detrás de la desaparición de
+					personas en Ecuador. Una mirada cuantitativa a un problema social
+					urgente.
+				</p>
 			</a>
 
 			<div class="project-card project-card--more">
 				<div class="body">
-					<h2>Otros proyectos y&nbsp;apps</h2>
+					<h3>Otros proyectos y&nbsp;apps</h3>
 					<p>
 						Puedes encontrar más de mi trabajo en <a
 							href="https://github.com/ccalobeto">GitHub</a
@@ -137,6 +144,12 @@
 </Main>
 
 <style lang="scss">
+	// The near-white canvas itself lives on #app.projects-canvas (PageShell +
+	// _preferences.scss) so header and footer share it too, not just this div.
+	.projects {
+		padding-block: var(--halfNote) var(--wholeNote);
+	}
+
 	.projects-hero {
 		margin-bottom: var(--wholeNote);
 
@@ -220,6 +233,11 @@
 			border: 1px dashed var(--lightGray);
 			min-height: 10rem;
 
+			h3 {
+				font-size: 1.3rem;
+				margin: 0 0 0.3rem;
+			}
+
 			p {
 				margin: 0;
 			}
@@ -239,6 +257,10 @@
 			object-fit: cover;
 			display: block;
 			transition: transform 0.25s ease;
+			// The four screenshots range from bright basemaps to dark panels -- a
+			// shared, mild filter levels their perceived brightness so the grid
+			// doesn't read as a contrast jump from tile to tile.
+			filter: saturate(0.85) contrast(0.95) brightness(0.97);
 		}
 	}
 
@@ -246,6 +268,7 @@
 		position: absolute;
 		top: var(--eighthNote);
 		left: var(--eighthNote);
+		z-index: 2;
 		font-family: var(--labelFont);
 		font-size: 0.75rem;
 		font-weight: bold;
@@ -255,40 +278,50 @@
 		padding: 0.15rem 0.4rem;
 	}
 
-	.body {
-		padding-top: var(--eighthNote);
+	// The scrim sits over a photograph, not the page surface -- a fixed dark
+	// gradient + white type keeps the title legible against any of the four
+	// images, in either site theme, instead of depending on --ink/--paper.
+	.scrim {
+		position: absolute;
+		inset: auto 0 0 0;
+		padding: 2.5rem var(--eighthNote) var(--eighthNote);
+		background: linear-gradient(
+			to top,
+			rgba(8, 14, 26, 0.82),
+			rgba(8, 14, 26, 0) 100%
+		);
 
-		h2 {
+		h3 {
+			margin: 0;
 			font-size: 1.3rem;
-			margin-top: 0.3rem;
+			font-weight: normal;
+			color: #fff;
+			display: inline-flex;
+			align-items: baseline;
+			gap: 0.3em;
 		}
 
-		p {
-			font-size: 0.95rem;
+		.ext {
+			font-family: var(--labelFont);
+			font-size: 0.6em;
+			color: hsla(0, 0%, 100%, 0.7);
+			transition: transform 0.2s ease;
 		}
 	}
 
 	.cat {
+		display: block;
+		margin-top: var(--eighthNote);
 		font-family: var(--labelFont);
 		font-size: 0.7rem;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--tagColor);
+		color: var(--secondaryInk);
 	}
 
-	.cta {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4em;
-		font-family: var(--labelFont);
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		color: var(--linkColor);
-
-		.arrow {
-			transition: transform 0.2s ease;
-		}
+	.desc {
+		margin: 0.3rem 0 0;
+		font-size: 0.95rem;
 	}
 
 	// Only animate the hover tilt/scale on devices that can genuinely hover
@@ -306,19 +339,15 @@
 			transform: rotate(2deg) scale(1.08);
 		}
 
-		.project-card:hover h2 {
-			color: var(--accentColor);
-		}
-
-		.project-card:hover .cta .arrow {
-			transform: translateX(3px);
+		.project-card:hover .scrim .ext {
+			transform: translate(0.15em, -0.15em);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		.project-card,
 		.frame img,
-		.cta .arrow {
+		.scrim .ext {
 			transition: none;
 		}
 
