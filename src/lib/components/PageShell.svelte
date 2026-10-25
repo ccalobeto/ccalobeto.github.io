@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Loader from '$lib/components/Loader.svelte'
 	import Footer from '$lib/components/Footer.svelte'
+	import ProjectsFooter from '$lib/components/ProjectsFooter.svelte'
 	import { prefersReducedData } from '$lib/assets/js/utils'
 	import { isLoading, prefersReducedMotion } from '$lib/data/store'
 	import { onMount } from 'svelte'
@@ -69,6 +70,10 @@
 	{@render children?.()}
 
 	{#if showFooter}
-		<Footer />
+		{#if isProjectsCanvas}
+			<ProjectsFooter />
+		{:else}
+			<Footer />
+		{/if}
 	{/if}
 </div>
