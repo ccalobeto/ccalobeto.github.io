@@ -106,9 +106,15 @@ $xxxl: 122rem;
 
 	// --highlightColor stays on the old gray swatches — it colors selected text against
 	// --yellow (see global.scss ::selection), unrelated to the ink/paper/accent redesign.
+	// Light-mode paper is a near-white, barely-navy-tinted ground (not the --lavender
+	// swatch) -- the "Pudding" canvas from /projects, now the whole site's default.
+	// --lavender itself is untouched: dark mode still uses it for --ink below.
+	// --ink/--accentColor/--linkColor/--tagColor/--secondaryInk were all validated at
+	// >=4.5:1 against the darker --lavender, so they only gain contrast here.
+	--paperHS: 220, 20%;
 	--ink: var(--navy);
-	--paper: var(--lavender);
-	--paperHSL: var(--lavenderHSL);
+	--paper: hsl(var(--paperHS), 96%);
+	--paperHSL: var(--paperHS), 96%;
 	--headingColor: var(--ink);
 	--accentColor: var(--signal);
 	--linkColor: var(--route);
