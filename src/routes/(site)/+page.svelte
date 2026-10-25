@@ -31,7 +31,7 @@
 			<ul class="capability-tags">
 				<li>Data Engineering</li>
 				<li>Cloud Architecture</li>
-				<li>Analytics &amp; Forecasting</li>
+				<li>Analytics</li>
 			</ul>
 		</div>
 
@@ -110,11 +110,6 @@
 			font-weight: normal;
 			max-width: 17em;
 
-			:global(strong) {
-				background: var(--yellow);
-				color: var(--darkerGray);
-			}
-
 			&::before {
 				display: none;
 			}
@@ -135,18 +130,23 @@
 	}
 
 	.capability-tags {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
 		gap: 0.5em;
 		list-style: none;
 		margin: 0;
 		padding: 0;
+
+		@media (max-width: vars.$xxs) {
+			grid-template-columns: 1fr;
+		}
 
 		li {
 			font-family: var(--labelFont);
 			font-size: 0.75rem;
 			text-transform: uppercase;
 			letter-spacing: 0.05em;
+			text-align: center;
 			color: var(--tagColor);
 			border: 1px solid var(--tagColor);
 			padding: 0.3em 0.7em;
