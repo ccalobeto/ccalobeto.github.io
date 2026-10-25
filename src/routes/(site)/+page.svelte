@@ -142,6 +142,11 @@
 		}
 
 		li {
+			// Resets the global `ul, ol { li + li { margin-top } }` prose-list default
+			// (_typography.scss) -- unscoped, so it was giving the 2nd/3rd tag a
+			// margin-top the 1st didn't have, pushing their borders down inside the
+			// grid row and making three equal-width boxes look uneven.
+			margin-top: 0;
 			font-family: var(--labelFont);
 			font-size: 0.75rem;
 			text-transform: uppercase;
