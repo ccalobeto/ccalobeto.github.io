@@ -81,7 +81,11 @@
 			color: var(--ink);
 			display: block;
 			display: inline-block;
+			font-family: var(--labelFont);
 			font-weight: normal;
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
 			text-decoration: none;
 			margin: 0;
 			position: relative;
@@ -89,8 +93,6 @@
 			width: max-content;
 
 			&.active {
-				font-weight: bold;
-
 				span:after {
 					transform: scaleX(1);
 				}
@@ -101,14 +103,14 @@
 
 				&:after {
 					position: absolute;
-					bottom: 0;
+					bottom: -0.3em;
 					left: 0;
 					content: '';
 					transform: scaleX(0);
 					display: block;
 					width: 100%;
 					height: 0.1em;
-					background: var(--yellow);
+					background: var(--ink);
 					transition: transform 0.1s cubic-bezier(0.5, 0, 0.5, 1);
 					transform-origin: right;
 				}

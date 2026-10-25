@@ -144,8 +144,6 @@
 </Main>
 
 <style lang="scss">
-	// The near-white canvas itself lives on #app.projects-canvas (PageShell +
-	// _preferences.scss) so header and footer share it too, not just this div.
 	.projects {
 		padding-block: var(--halfNote) var(--wholeNote);
 	}
