@@ -26,7 +26,7 @@
 					Soy <strong>Analytics Engineer</strong> en una empresa privada, donde
 					diseño y desarrollo plataformas de datos end-to-end en la nube — desde
 					la ingesta y transformación hasta modelos de pronóstico de demanda. Mi
-					trabajo más reciente: una arquitectura Lakehouse en AWS que automatiza
+					trabajo más reciente: una arquitectura Datalake en AWS que automatiza
 					seis datamarts y distribuye cerca de
 					<strong>1,800 series pronosticadas</strong> cada mes.
 				</p>
@@ -36,37 +36,19 @@
 		<p>
 			Este sitio es mi espacio personal para explorar la analítica más allá de
 			la empresa: desde segmentación geoespacial para negocios hasta análisis
-			con impacto social, como sismos y desapariciones en Perú y Ecuador.
-			Podés ver esos proyectos en <a href="/projects">Proyectos</a>.
+			con impacto social, como sismos y desapariciones en Perú y Ecuador; y que
+			podrás ver en <a href="/projects">Proyectos</a>.
 		</p>
 
 		<p>
 			Soy Ingeniero Electrónico de formación. Antes de dedicarme a los datos
-			trabajé en <em>telecomunicaciones</em>, en roles comerciales y de
-			recursos humanos — ahí descubrí mi interés por el análisis y la
-			automatización, que profundicé después como
-			<strong>Data Science Specialist</strong> en una empresa de biotecnología
-			nutracéutica.
+			trabajé en <em>telecomunicaciones</em>, en roles comerciales y de recursos
+			humanos — ahí descubrí mi interés por el análisis y la automatización, que
+			profundicé después como
+			<strong>Data Science Specialist</strong> en una empresa de Biotecnología
+			Nutracéutica y actualmente como <strong>Analytics Engineer</strong> en una
+			empresa de Manufactura.
 		</p>
-
-		<h3>Mas de mi:</h3>
-
-		<ul>
-			<!-- <li>
-				<a href="/contact?from_page=about">Contacto</a>
-			</li> -->
-			<li>
-				<a href="https://www.linkedin.com/in/carlosleonl" rel="nofollow"
-					>LinkedIn</a
-				>
-			</li>
-			<li>
-				<a href="https://github.com/ccalobeto" rel="nofollow">GitHub</a>
-			</li>
-			<li class="link-list__contact">
-				<a href="mailto:leon.calobeto@gmail.com"> Contáctate conmigo </a>
-			</li>
-		</ul>
 	</div>
 </Main>
 
