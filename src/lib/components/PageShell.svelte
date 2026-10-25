@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte'
 	import { afterNavigate, beforeNavigate, preloadCode } from '$app/navigation'
 	import { dev } from '$app/environment'
+	import { page } from '$app/stores'
 
 	interface Props {
 		showFooter?: boolean
@@ -15,6 +16,13 @@
 	let { showFooter = true, children }: Props = $props()
 
 	let root: HTMLElement
+
+	// /projects runs a lighter, near-white "Pudding" canvas on the whole page
+	// shell (header + main + footer), not just its own content -- see that
+	// page's own styles for the color values and the dark-mode variant.
+	let isProjectsCanvas: boolean = $derived(
+		$page.url.pathname.startsWith('/projects')
+	)
 
 	beforeNavigate(({ to }) => {
 		if (to?.route?.id) {
@@ -51,7 +59,11 @@
 	{/if}
 </svelte:head>
 
-<div id="app" class:reduce-motion={$prefersReducedMotion}>
+<div
+	id="app"
+	class:reduce-motion={$prefersReducedMotion}
+	class:projects-canvas={isProjectsCanvas}
+>
 	<Loader loading={$isLoading} />
 
 	{@render children?.()}

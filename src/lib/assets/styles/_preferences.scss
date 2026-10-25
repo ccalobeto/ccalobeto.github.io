@@ -10,4 +10,27 @@
 	&.reduce-motion * {
 		transition: opacity 0.2s !important;
 	}
+
+	// Scoped per-route "Pudding" canvas for /projects (PageShell toggles this
+	// class only while on that route) -- near-white in light mode so header,
+	// main, and footer read as one continuous tone there, instead of the
+	// lavender/navy brand canvas used everywhere else on the site. --ink and
+	// --secondaryInk were validated against the darker --lavender, so they only
+	// gain contrast against this lighter ground -- no new AA check needed.
+	&.projects-canvas {
+		--paper: hsl(220, 20%, 96%);
+	}
+}
+
+// :global()/the dark-mode mixin only work inside a Svelte component's
+// <style lang="scss"> block (see CLAUDE.md) -- this is a plain global partial,
+// so the mixin's two branches are written out by hand instead.
+html.dark #app.projects-canvas {
+	--paper: var(--navy); // dark theme keeps the site's real paper
+}
+
+html:not(.light) #app.projects-canvas {
+	@media (prefers-color-scheme: dark) {
+		--paper: var(--navy);
+	}
 }

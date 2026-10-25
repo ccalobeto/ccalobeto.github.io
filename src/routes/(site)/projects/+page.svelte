@@ -144,22 +144,10 @@
 </Main>
 
 <style lang="scss">
+	// The near-white canvas itself lives on #app.projects-canvas (PageShell +
+	// _preferences.scss) so header and footer share it too, not just this div.
 	.projects {
-		// Pudding's near-white canvas, scoped to this page only (not _vars.scss --
-		// the rest of the site stays navy/lavender). --ink and --secondaryInk were
-		// validated against the darker --lavender, so they only gain contrast here,
-		// not lose it -- no new AA check needed.
-		--paper: hsl(220, 20%, 96%);
-		background: var(--paper);
-		padding: var(--halfNote) var(--halfNote) var(--wholeNote);
-	}
-
-	// Must sit outside .projects -- nesting it inside would make Sass prepend the
-	// parent selector, producing ".projects :global(.dark .projects)", which can
-	// never match (.projects is never its own ancestor).
-	@include vars.dark-mode('.projects') {
-		--paper: var(--navy); // dark theme keeps the site's real paper; this
-		// lighter canvas is a light-theme-only treatment.
+		padding-block: var(--halfNote) var(--wholeNote);
 	}
 
 	.projects-hero {
