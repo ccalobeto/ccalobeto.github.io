@@ -74,9 +74,6 @@
 		.intro .intro__headline > *:nth-child(#{$i}) {
 			animation-delay: 0.2 + ($i * 0.14s);
 		}
-		.intro .intro__headline ul li:nth-child(#{$i}) {
-			animation-delay: 0.8 + ($i * 0.1s);
-		}
 	}
 
 	.intro {
@@ -84,8 +81,11 @@
 		position: relative;
 		margin-top: var(--wholeNote);
 
-		.intro__headline > *,
-		.intro__headline ul li {
+		// The three tags fade in together as part of the <ul> (a single direct
+		// child of .intro__headline, animated below) -- staggering each <li> on
+		// its own timeline used to let one tag finish before its siblings,
+		// which could read as misaligned heights for a frame or two.
+		.intro__headline > * {
 			opacity: 0;
 			transform: translateY(16px);
 			animation: fade_in_intro 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
