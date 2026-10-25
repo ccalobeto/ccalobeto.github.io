@@ -34,6 +34,14 @@
 	together) until the outgoing one is removed, which reads as a page jump on
 	any route whose height differs much from the one navigated away from.
 	Placing both in the same grid cell overlaps them instead.
+
+	in:fly used to carry delay: TIMING_DURATION, waiting for the whole out
+	transition to finish before starting the in one. Measured live (DOM
+	opacity sampled every 20ms during a real navigation): the outgoing
+	wrapper doesn't actually hit 0 until a bit after that delay elapses, so
+	there was a ~20-40ms window where both wrappers sat at ~0 opacity --
+	a brief flash to blank, which read as a jump. Dropping the delay lets
+	them cross-fade over the same window instead.
 -->
 <div class="transition-stage">
 	{#key refresh}
@@ -43,7 +51,6 @@
 			in:fly|global={{
 				y: yIn,
 				duration: transitionIn ? TIMING_DURATION : 0,
-				delay: transitionIn ? TIMING_DURATION : 0,
 				easing: cubicOut
 			}}
 			out:fly|global={{
