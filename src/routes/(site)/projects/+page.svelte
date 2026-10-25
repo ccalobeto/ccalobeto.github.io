@@ -28,7 +28,7 @@
 
 		<div class="project-grid">
 			<a class="project-card" href="https://h3-sales-quota.pages.dev/">
-				<div class="frame">
+				<div class="frame" style="--card-bg: hsl(60, 64%, 80%);">
 					<span class="num">01</span>
 					<img
 						src="/images/post_images/peru-spatial-index.gif"
@@ -53,7 +53,7 @@
 				class="project-card"
 				href="https://ccalobeto.github.io/latam-cartography/"
 			>
-				<div class="frame">
+				<div class="frame" style="--card-bg: hsl(210, 78%, 80%);">
 					<span class="num">02</span>
 					<img
 						src="/images/post_images/latam-carto-qresize.png"
@@ -80,7 +80,7 @@
 				rel="external"
 				href="https://ccalobeto.github.io/earthquakes/"
 			>
-				<div class="frame">
+				<div class="frame" style="--card-bg: hsl(0, 85%, 80%);">
 					<span class="num">03</span>
 					<img
 						src="/images/post_images/peru-earthquakes-qresize.png"
@@ -106,7 +106,7 @@
 				rel="external"
 				href="https://ccalobeto.github.io/missed-ec/"
 			>
-				<div class="frame">
+				<div class="frame" style="--card-bg: hsl(30, 25%, 50%);">
 					<span class="num">04</span>
 					<img
 						src="/images/post_images/missing-child-qresize.png"
@@ -247,7 +247,10 @@
 		overflow: hidden;
 		aspect-ratio: 4 / 3;
 		border: 1px solid var(--lightGray);
-		background: var(--paper);
+		// --card-bg is each screenshot's extracted accent color (see
+		// scripts/dominant-color.mjs) -- it only shows briefly while the
+		// lazy-loaded image paints, so it doesn't need text-contrast checks.
+		background: var(--card-bg, var(--paper));
 
 		img {
 			width: 100%;
