@@ -1,9 +1,9 @@
-<footer class="projects-footer">
+<footer class="site-footer">
 	<p>Carlos León · Lima, Perú</p>
 </footer>
 
 <style lang="scss">
-	.projects-footer {
+	.site-footer {
 		border-top: 1px solid var(--lightGray);
 		padding: var(--halfNote) var(--margin);
 

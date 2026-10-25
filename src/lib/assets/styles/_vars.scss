@@ -106,9 +106,17 @@ $xxxl: 122rem;
 
 	// --highlightColor stays on the old gray swatches — it colors selected text against
 	// --yellow (see global.scss ::selection), unrelated to the ink/paper/accent redesign.
+	// --canvasHS is the single neutral hue+saturation behind BOTH themes' paper — barely
+	// blue-tinted, not the saturated --navy/--lavender brand swatches. Light goes to 96%
+	// lightness (near-white, the "Pudding" canvas), dark to 10% (near-black, not the old
+	// vivid navy — see &.dark below). --lavender itself is untouched: dark mode still
+	// uses it for --ink. --ink/--accentColor/--linkColor/--tagColor/--secondaryInk were
+	// all validated at >=4.5:1 against the OLD, less extreme --lavender/--navy paper, so
+	// they only gain contrast against these more neutral, more extreme grounds.
+	--canvasHS: 220, 20%;
 	--ink: var(--navy);
-	--paper: var(--lavender);
-	--paperHSL: var(--lavenderHSL);
+	--paper: hsl(var(--canvasHS), 96%);
+	--paperHSL: var(--canvasHS), 96%;
 	--headingColor: var(--ink);
 	--accentColor: var(--signal);
 	--linkColor: var(--route);
@@ -150,8 +158,8 @@ $xxxl: 122rem;
 	}
 
 	&.dark {
-		--paper: var(--navy);
-		--paperHSL: var(--navyHSL);
+		--paper: hsl(var(--canvasHS), 10%);
+		--paperHSL: var(--canvasHS), 10%;
 		--ink: var(--lavender);
 		--headingColor: var(--ink);
 		--accentColor: var(--signalLight);
@@ -166,8 +174,8 @@ $xxxl: 122rem;
 	// Ensures media query only runs if a theme has not been set AND the user prefers dark color schemes
 	&:not(.light) {
 		@media (prefers-color-scheme: dark) {
-			--paper: var(--navy);
-			--paperHSL: var(--navyHSL);
+			--paper: hsl(var(--canvasHS), 10%);
+			--paperHSL: var(--canvasHS), 10%;
 			--ink: var(--lavender);
 			--headingColor: var(--ink);
 			--accentColor: var(--signalLight);

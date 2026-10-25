@@ -6,7 +6,6 @@
 	import PageShell from '$lib/components/PageShell.svelte'
 	import Header from '$lib/components/header/Header.svelte'
 	import PageTransition from '$lib/components/transitions/PageTransition.svelte'
-	import PageHeading from '$lib/components/PageHeading.svelte'
 	import { isScrollingDown } from '$lib/data/store'
 
 	interface Props {
@@ -51,8 +50,6 @@
 	<Header />
 
 	<div class="layout">
-		<PageHeading title={path} />
-
 		<PageTransition refresh={path}>
 			{@render children?.()}
 		</PageTransition>
