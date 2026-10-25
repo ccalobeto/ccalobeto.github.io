@@ -27,28 +27,45 @@
 	}: Props = $props();
 </script>
 
-{#key refresh}
-	<div
-		class="transition-wrapper"
-		class:span
-		in:fly|global={{
-			y: yIn,
-			duration: transitionIn ? TIMING_DURATION : 0,
-			delay: transitionIn ? TIMING_DURATION : 0,
-			easing: cubicOut
-		}}
-		out:fly|global={{
-			y: yOut,
-			duration: transitionOut ? TIMING_DURATION : 0,
-			easing: cubicIn
-		}}
-	>
-		{@render children?.()}
-	</div>
-{/key}
+<!--
+	The outgoing and incoming instances of .transition-wrapper briefly coexist
+	while they cross-fade -- without .transition-stage, Svelte stacks them in
+	normal flow (old content's height, then new content's height, added
+	together) until the outgoing one is removed, which reads as a page jump on
+	any route whose height differs much from the one navigated away from.
+	Placing both in the same grid cell overlaps them instead.
+-->
+<div class="transition-stage">
+	{#key refresh}
+		<div
+			class="transition-wrapper"
+			class:span
+			in:fly|global={{
+				y: yIn,
+				duration: transitionIn ? TIMING_DURATION : 0,
+				delay: transitionIn ? TIMING_DURATION : 0,
+				easing: cubicOut
+			}}
+			out:fly|global={{
+				y: yOut,
+				duration: transitionOut ? TIMING_DURATION : 0,
+				easing: cubicIn
+			}}
+		>
+			{@render children?.()}
+		</div>
+	{/key}
+</div>
 
 <style lang="scss">
+	.transition-stage {
+		display: grid;
+	}
+
 	.transition-wrapper {
+		grid-column: 1;
+		grid-row: 1;
+
 		&.span {
 			grid-column: 1 / -1;
 			grid-row: 1 / 2;
