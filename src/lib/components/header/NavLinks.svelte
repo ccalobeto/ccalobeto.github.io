@@ -5,7 +5,7 @@
 </script>
 
 <ul class:open={$menu}>
-	<NavLink to={navItems.home.route} text={navItems.home.title} mobileOnly={true} />
+	<NavLink to={navItems.home.route} text={navItems.home.title} />
 	<NavLink to={navItems.projects.route} text={navItems.projects.title} />
 	<NavLink to={navItems.about.route} text={navItems.about.title} />
 	<!-- <NavLink to={navItems.contact.route} text={navItems.contact.title} /> -->

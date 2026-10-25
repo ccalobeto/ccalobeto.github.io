@@ -1,5 +1,4 @@
 <script lang="ts">
-	import LogoSVG from '$lib/components/header/LogoSVG.svelte'
 	import NavMenu from '$lib/components/header/NavMenu.svelte'
 	import DarkModeToggle from '$lib/components/settings/DarkModeToggle.svelte'
 	import { isScrollingDown } from '$lib/data/store'
@@ -19,10 +18,7 @@
 			Skip to main content
 		</a>
 
-		<a href="/" class="logo">
-			<LogoSVG />
-			<span class="sr">Home</span>
-		</a>
+		<a href="/" class="logo">Carlos León</a>
 
 		<div
 			class="icon-container"
@@ -30,8 +26,8 @@
 			class:ghosty={$isScrollingDown && !$menu}
 		>
 			<!-- <ReduceMotionToggle /> -->
-			<DarkModeToggle />
 			<NavMenu />
+			<DarkModeToggle />
 		</div>
 	</header>
 
@@ -52,13 +48,14 @@
 
 <style lang="scss">
 	.logo {
-		width: auto;
-		height: 2rem;
 		display: block;
-
-		@media (min-width: vars.$xxl) and (min-height: vars.$md) {
-			height: 3rem;
-		}
+		font-family: var(--labelFont);
+		font-weight: 700;
+		font-size: 0.9rem;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		color: var(--ink);
+		text-decoration: none;
 	}
 
 	.icon-container {
