@@ -152,11 +152,14 @@
 		--paper: hsl(220, 20%, 96%);
 		background: var(--paper);
 		padding: var(--halfNote) var(--halfNote) var(--wholeNote);
+	}
 
-		@include vars.dark-mode('.projects') {
-			--paper: var(--navy); // dark theme keeps the site's real paper; this
-			// lighter canvas is a light-theme-only treatment.
-		}
+	// Must sit outside .projects -- nesting it inside would make Sass prepend the
+	// parent selector, producing ".projects :global(.dark .projects)", which can
+	// never match (.projects is never its own ancestor).
+	@include vars.dark-mode('.projects') {
+		--paper: var(--navy); // dark theme keeps the site's real paper; this
+		// lighter canvas is a light-theme-only treatment.
 	}
 
 	.projects-hero {
