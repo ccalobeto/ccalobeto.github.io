@@ -16,6 +16,16 @@
 
 <Main>
 	<div class="projects compressed-content double-wide">
+		<div class="projects-hero">
+			<p class="eyebrow">Proyectos — datos abiertos</p>
+			<h2>Mapas, datos y las historias que <em>esconden</em>.</h2>
+			<p class="intro">
+				Cuatro piezas sobre geografía, riesgo y migración en el Perú y
+				Ecuador — de segmentación comercial a sismos y desapariciones,
+				contadas con datos abiertos.
+			</p>
+		</div>
+
 		<div class="project-grid">
 			<a class="project-card" href="https://h3-sales-quota.pages.dev/">
 				<div class="frame">
@@ -127,6 +137,70 @@
 </Main>
 
 <style lang="scss">
+	.projects-hero {
+		margin-bottom: var(--wholeNote);
+
+		> * {
+			opacity: 0;
+			transform: translateY(12px);
+			animation: hero_rise 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+
+			:global(.reduce-motion) & {
+				opacity: 1;
+				transform: translateY(0);
+				animation: none;
+			}
+		}
+
+		.eyebrow {
+			animation-delay: 0.05s;
+		}
+
+		h2 {
+			animation-delay: 0.15s;
+		}
+
+		.intro {
+			animation-delay: 0.3s;
+		}
+	}
+
+	@keyframes hero_rise {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.projects-hero .eyebrow {
+		font-family: var(--labelFont);
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--secondaryInk);
+		margin: 0 0 var(--eighthNote);
+	}
+
+	.projects-hero h2 {
+		font-family: var(--headingFont);
+		font-weight: normal;
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		line-height: 1.08;
+		margin: 0;
+		max-width: 18ch;
+
+		em {
+			font-style: italic;
+		}
+	}
+
+	.projects-hero .intro {
+		margin: var(--eighthNote) 0 0;
+		max-width: 42ch;
+		font-size: 1.05rem;
+		color: var(--secondaryInk);
+	}
+
 	.project-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
